@@ -1,6 +1,17 @@
-var ws = $.websocket("ws://" + window.location.hostname + ":"
-			+ window.location.port + "/NoodlePadApp/pad");
-			
+var ws = $.websocket("ws://192.168.159.173:8080/NoodlePadApp/pad", {
+	open : function() {
+				output("onopen");
+			},
+	events : {
+		message : function(e) {
+			output("echo from server : " + e.data);
+		},
+		close : function(e) {
+
+		}
+	}
+});
+		
 function pasteHtmlAtCaret(html) {
     var sel, range;
     if (window.getSelection) {
@@ -131,10 +142,11 @@ $(function() {
 		}
         $('#padText').css('z-index', '99');
 	})
-	var pads = [{title : "HTML5 Hackathon"},
-							{title : "Another Group"},
-							{title : "Okay"}
+	var pads = [{title : "HTML5 Hackathon", id : 1},
+							{title : "Another Group", id : 2},
+							{title : "Okay", id : 3}
 							];
+	// var pads = ws.send('pad_list');
 	$.tmpl(padTitleTemplate, pads).appendTo("#fileList");
 	$('#new_pad').submit(function(e){
 		e.preventDefault();
@@ -145,7 +157,8 @@ $(function() {
 		ws.send('pad', {title : title});
 	})
 	$('.padTitle').click(function(){
-		$('#padText').html('test<br>hi');
+		var id = $(this).tmplItem().data.id;
+		$('#padText').html(getSomeText(id));
 	})
 	$('#username').keydown(function(e){
 		if (e.keyCode == 13){
@@ -165,6 +178,15 @@ $(function() {
   NoodlePadDrawing.setCanvas('mainPad', 'tempPad');    
 })
 
+function getSomeText(id){
+	if (id == 1){
+		return "helo";
+	} else if (id == 2){
+		return "hei";
+	} else if (id == 3){
+		return "hi";
+	}
+}
 $.fn.addDefaultText = function(text){
 	$(this).val(text);
 	$(this).addClass('default_text');
