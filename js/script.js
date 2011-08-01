@@ -1,6 +1,6 @@
-/* Author: 
-
-*/
+var ws = $.websocket("ws://" + window.location.hostname + ":"
+			+ window.location.port + "/NoodlePadApp/pad");
+			
 function pasteHtmlAtCaret(html) {
     var sel, range;
     if (window.getSelection) {
@@ -142,6 +142,7 @@ $(function() {
 		var pad = [{title: title}];	
 		$.tmpl(padTitleTemplate, pad).appendTo("#fileList");
 		$('#pad_title').val('').blur();
+		ws.send('pad', {title : title});
 	})
 	$('.padTitle').click(function(){
 		$('#padText').html('test<br>hi');
