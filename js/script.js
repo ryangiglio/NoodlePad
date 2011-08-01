@@ -58,24 +58,28 @@ var NoodlePadDrawing = {
   
   getPoint: function(event) {
     return {
-      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width(),
+      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width() - 21,
       y: event.clientY - NoodlePadDrawing.temp_context.canvas.offsetTop
     }
   },
-  drawLine: function(context, path) {
+  strokeLine: function(context, path, style, width) {
     context.beginPath();
     context.moveTo(path[0].x, path[0].y);
     for(i=1; i<path.length; i++) {
       context.lineTo(path[i].x,path[i].y);
     }
 
-    context.shadowBlur = "3";
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.strokeStyle = "rgb(64,64,64)";
-    context.lineWidth = "5";
+    context.strokeStyle = style;
+    context.lineWidth = width;
     context.stroke();
     context.closePath();
+  },
+  drawLine: function(context, path) {
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.25)", 10);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.5)", 7);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(128,128,128,1)", 5);
   },
   beginLine: function(event) {
     console.log('beginLine');
@@ -129,6 +133,9 @@ $(function() {
 		var pad = [{title: title}];	
 		$.tmpl(padTitleTemplate, pad).appendTo("#fileList");
 		$('#pad_title').val('').blur();
+	})
+	$('.padTitle').click(function(){
+		$('#padText').html('test<br>hi');
 	})
 	$('#username').keydown(function(e){
 		if (e.keyCode == 13){
