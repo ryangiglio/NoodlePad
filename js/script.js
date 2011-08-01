@@ -108,6 +108,7 @@ $(function() {
 			$(this).addClass('activeMode');
 			$('#drawToggle').removeClass('activeMode');
 		}
+        $('#padText').css('z-index', '103');
 	})
 	$('#drawToggle').click(function(){
 		if ($('#writeToggle').hasClass('activeMode')){
@@ -115,6 +116,7 @@ $(function() {
 			$(this).addClass('activeMode');
 			$('#writeToggle').removeClass('activeMode');
 		}
+        $('#padText').css('z-index', '99');
 	})
 	var pads = [{title : "HTML5 Hackathon"},
 							{title : "Another Group"},
@@ -140,6 +142,9 @@ $(function() {
             e.preventDefault();
         };
     });
+    $('#tempPad').replaceWith('<canvas id="tempPad" width=' + $('#tempPad').width() + ' height=' + $('#tempPad').height() + '></canvas>');
+    $('#mainPad').replaceWith('<canvas id="mainPad" width=' + $('#mainPad').width() + ' height=' + $('#mainPad').height() + '></canvas>');
+
   NoodlePadDrawing.setCanvas('mainPad', 'tempPad');    
 })
 
