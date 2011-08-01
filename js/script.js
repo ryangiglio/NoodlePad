@@ -58,7 +58,7 @@ var NoodlePadDrawing = {
   
   getPoint: function(event) {
     return {
-      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width(),
+      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft,
       y: event.clientY - NoodlePadDrawing.temp_context.canvas.offsetTop
     }
   },
@@ -86,13 +86,13 @@ var NoodlePadDrawing = {
     if (!NoodlePadDrawing.drawing) return;
 
     path.push(NoodlePadDrawing.getPoint(event));
-    NoodlePadDrawing.temp_context.clearRect(0,0,50000,50000);
+    NoodlePadDrawing.temp_context.clearRect(0,0,500,500);
     NoodlePadDrawing.drawLine(NoodlePadDrawing.temp_context, path);
   },
   endLine: function(event) {
     if (!NoodlePadDrawing.drawing) return;
 
-    NoodlePadDrawing.temp_context.clearRect(0,0,50000,50000);
+    NoodlePadDrawing.temp_context.clearRect(0,0,500,500);
     NoodlePadDrawing.drawLine(NoodlePadDrawing.main_context, path);
     NoodlePadDrawing.drawing = false;
 

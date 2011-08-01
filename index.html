@@ -44,6 +44,7 @@
 
     <!-- scripts concatenated and minified via ant build script-->
     <script src="js/libs/jquery.tmpl.js"></script>
+    <script src="js/libs/jquery.websocket-0.0.1.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/script.js"></script>
     
@@ -56,26 +57,26 @@
     </script>
 	
 	<script type="text/javascript">
-		document.getElementById('file').onchange = function() {
-          displayFile(this.files[0]);
-        };
+    // document.getElementById('file').onchange = function() {
+    //           displayFile(this.files[0]);
+    //         };
 		
-		displayFile(file){
-			alert(file.type);
-		}
-		
-		        content.ondragenter = function() {
-          content.style.border = '4px solid #b1ecb3';
-          return false;
-        };
-      
-        content.ondragover = function() {
-          return false;
-        };
-      
-        content.ondragleave = function() {
-          return false;
-        };
+    // displayFile(file){
+    //  alert(file.type);
+    // }
+        //    
+        //            content.ondragenter = function() {
+        //   content.style.border = '4px solid #b1ecb3';
+        //   return false;
+        // };
+        //       
+        // content.ondragover = function() {
+        //   return false;
+        // };
+        //       
+        // content.ondragleave = function() {
+        //   return false;
+        // };
       
 		
 	</script>
