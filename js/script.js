@@ -77,10 +77,9 @@ var NoodlePadDrawing = {
     context.closePath();
   },
   drawLine: function(context, path) {
-    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.25)", 8);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.25)", 10);
     NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.5)", 7);
-    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.75)", 6);
-    NoodlePadDrawing.strokeLine(context, path, "rgba(64,64,64,1)", 5);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(128,128,128,1)", 5);
   },
   beginLine: function(event) {
     console.log('beginLine');
