@@ -3,18 +3,15 @@
 */
 $(function() {
 	$('#writeToggle').click(function(){
-		if ($(this).hasClass('activeMode')){
-			$('#padText').attr('contenteditable') = false;
-		} else {
-			$('#padText').attr('contenteditable') = true;
+		if ($('#drawToggle').hasClass('activeMode')){
+			$('#padText').attr('contenteditable', true);
 			$(this).addClass('activeMode');
 			$('#drawToggle').removeClass('activeMode');
 		}
 	})
 	$('#drawToggle').click(function(){
-		if ($(this).hasClass('activeMode')){
-			$('#padText').attr('contenteditable') = false;
-		} else {
+		if ($('#writeToggle').hasClass('activeMode')){
+			$('#padText').removeAttr('contenteditable');
 			$(this).addClass('activeMode');
 			$('#writeToggle').removeClass('activeMode');
 		}
