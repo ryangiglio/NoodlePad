@@ -151,12 +151,13 @@ $(function() {
 	$('#new_pad').submit(function(e){
 		e.preventDefault();
 		var title = $('#pad_title').val();
-		var pad = [{title: title}];	
+		var lastId = $('.padTitle:last').tmplItem().data.id + 1;
+		var pad = [{title: title, id : lastId}];
 		$.tmpl(padTitleTemplate, pad).appendTo("#fileList");
 		$('#pad_title').val('').blur();
 		ws.send('pad', {title : title});
 	})
-	$('.padTitle').click(function(){
+	$('.padTitle').live('click', function(){
 		var id = $(this).tmplItem().data.id;
 		$('#padText').html(getSomeText(id));
 	})
@@ -185,6 +186,8 @@ function getSomeText(id){
 		return "hei";
 	} else if (id == 3){
 		return "hi";
+	} else {
+		return "";
 	}
 }
 $.fn.addDefaultText = function(text){
