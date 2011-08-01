@@ -29,7 +29,10 @@
             <canvas id="tempPad"></canvas>
             <div id="padText" contenteditable></div>
             <div id="toolbar">
-                <div id="writeDrawToggle">
+                <div id="filearea">                
+                    <input type="file" id="file" style="width:300px;">
+                </div>
+				<div id="writeDrawToggle">
                     <button id="writeToggle" class="activeMode">Write</button>
                     <button id="drawToggle">Draw</button>
                 </div>
@@ -51,6 +54,31 @@
         </div>
       </li>
     </script>
+	
+	<script type="text/javascript">
+		document.getElementById('file').onchange = function() {
+          displayFile(this.files[0]);
+        };
+		
+		displayFile(file){
+			alert(file.type);
+		}
+		
+		        content.ondragenter = function() {
+          content.style.border = '4px solid #b1ecb3';
+          return false;
+        };
+      
+        content.ondragover = function() {
+          return false;
+        };
+      
+        content.ondragleave = function() {
+          return false;
+        };
+      
+		
+	</script>
 
 </body>
 </html>
