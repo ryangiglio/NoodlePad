@@ -10,34 +10,42 @@
 </head>
 
 <body>
-  <div id="sidebar">
-    <div id="create_pad">
-      Create New
+    <div id="wrapper">
+        <div id="sidebar">
+            <div id="create_pad">
+              Create New
+            </div>
+            <div id="new_pad_form", style="display:none">
+              <form>
+                <input type="text" name="new_pad_title" />
+                <input type="submit" value="Create" />
+              </form>
+            </div>
+            <ul id="fileList">
+            </ul>
+        </div>
+        <div id="editor">
+            <div id="writeDrawToggle">
+                <input type="button" id="writeToggle" value="Write" name="" />
+                <input type="button" id="drawToggle" value="Draw" name="" />
+            </div>
+            <textarea></textarea>
+            <canvas></canvas>
+        </div>
     </div>
-    <div id="new_pad_form", style="display:none">
-      <form>
-        <input type="text" name="new_pad_title" />
-        <input type="submit" value="Create" />
-      </form>
-    </div>
-  </div>
-  <div id="container">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
 
-  </div> <!-- eo #container -->
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
-  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
-
-  <!-- scripts concatenated and minified via ant build script-->
-  <script src="js/libs/jquery.tmpl.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
-  
-  <script type ="text/x-jquery-tmpl" id = "padTitleTemplate">
-    <div class="pad_title">
-      ${title}
-    </div>
-  </script>
+    <!-- scripts concatenated and minified via ant build script-->
+    <script src="js/libs/jquery.tmpl.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+    
+    <script type ="text/x-jquery-tmpl" id = "padTitleTemplate">
+      <li>
+        ${title}
+      </li>
+    </script>
 
 </body>
 </html>

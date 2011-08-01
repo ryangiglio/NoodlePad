@@ -81,7 +81,18 @@ a:hover { color: #036; }
  * Author: 
  */
 
+#wrapper {
+    display: box;
+    box-orient: horizontal;
+}
+    #sidebar {
+        width: 200px;
+        background-color:#00FF00;
+    }
+    #editor {
 
+        background-color:#FF0000;
+    }
 
 
 
