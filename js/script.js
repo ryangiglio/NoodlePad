@@ -18,6 +18,12 @@ $(function() {
 		$('#pad_title').val('');
 		$('#new_pad_form').hide();
 	})
+	$('#username').keydown(function(e){
+		if (e.keyCode == 13){
+			$('#username').blur();
+			e.preventDefault();
+		}
+	})
 })
 
 
