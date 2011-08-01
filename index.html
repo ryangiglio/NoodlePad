@@ -6,22 +6,44 @@
   <title></title>
 
   <link rel="stylesheet" href="css/style.css?v=2">
-  <script src="js/libs/modernizr-1.7.min.js"></script>
 
 </head>
 
 <body>
 
-  <div id="container">
+    <div id="wrapper">
+        <div id="sidebar">
+            <input type="button" id="createNew" value="Create New Pad" name="" />
+            <ul id="fileList">
+                <li>
+                    <a href="#pad1">Pad 1</a>
+                </li>
+                <li>
+                    <a href="#pad2">Pad 2</a>
+                </li>
+                <li>
+                    <a href="#pad3">Pad 3</a>
+                </li>
+                <li>
+                    <a href="#pad4">Pad 4</a>
+                </li>
+            </ul>
+        </div>
+        <div id="editor">
+            <div id="writeDrawToggle">
+                <input type="button" id="writeToggle" value="Write" name="" />
+                <input type="button" id="drawToggle" value="Draw" name="" />
+            </div>
+            <textarea></textarea>
+            <canvas></canvas>
+        </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
 
-  </div> <!-- eo #container -->
-
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
-  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.1.min.js'>\x3C/script>")</script>
-
-  <!-- scripts concatenated and minified via ant build script-->
-  <script src="js/plugins.js"></script>
-  <script src="js/script.js"></script>
+    <!-- scripts concatenated and minified via ant build script-->
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>
