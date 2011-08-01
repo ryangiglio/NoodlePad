@@ -2,6 +2,7 @@
 
 */
 $(function() {
+	$('#pad_title').addDefaultText('Create New');
 	$('#writeToggle').click(function(){
 		if ($('#drawToggle').hasClass('activeMode')){
 			$('#padText').attr('contenteditable', true);
@@ -21,16 +22,12 @@ $(function() {
 							{title : "Okay"}
 							];
 	$.tmpl(padTitleTemplate, pads).appendTo("#fileList");
-	$('#create_pad').click(function(){
-		$('#new_pad_form').show();
-	})
 	$('#new_pad').submit(function(e){
 		e.preventDefault();
 		var title = $('#pad_title').val();
 		var pad = [{title: title}];	
-		$.tmpl(padTitleTemplate, pad).prependTo("#fileList");
-		$('#pad_title').val('');
-		$('#new_pad_form').hide();
+		$.tmpl(padTitleTemplate, pad).appendTo("#fileList");
+		$('#pad_title').val('').blur();
 	})
 	$('#username').keydown(function(e){
 		if (e.keyCode == 13){
@@ -40,24 +37,22 @@ $(function() {
 	})
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$.fn.addDefaultText = function(text){
+	$(this).val(text);
+	$(this).addClass('default_text');
+	$(this).data('default', $(this).val());
+	$(this).click(function(){
+			$(this).removeClass('default_text');
+			if ($(this).val() == $(this).data('default')){
+				$(this).val('');
+			}
+		})
+	$(this).blur(function(){
+		var default_val = $(this).data('default');
+		var trimmed = $.trim($(this).val());
+		if (trimmed == ''){
+			$(this).addClass('default_text');
+			$(this).val($(this).data('default'));
+		}
+	})
+}
