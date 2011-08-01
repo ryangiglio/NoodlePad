@@ -26,14 +26,15 @@
         </div>
         <div id="editor">
             <div id="padText" contenteditable></div>
-            <canvas></canvas>
+            <canvas id="mainPad"></canvas>
+            <canvas id="tempPad"></canvas>
             <div id="writeDrawToggle">
                 <button id="writeToggle" class="activeMode">Write</button>
                 <button id="drawToggle">Draw</button>
             </div>
         </div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
 
     <!-- scripts concatenated and minified via ant build script-->

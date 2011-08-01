@@ -35,6 +35,71 @@ function pasteHtmlAtCaret(html) {
     }
 }
 
+var NoodlePadDrawing = {
+  main_context: null,
+  temp_context: null,
+  drawing: false,
+  path: null,
+
+  setCanvas: function(id_main, id_temp) {
+    canvas = document.getElementById(id_main);
+    NoodlePadDrawing.main_context = canvas.getContext('2d');
+
+    canvas = document.getElementById(id_temp);
+    context = canvas.getContext('2d');
+
+    canvas.addEventListener('mousedown', NoodlePadDrawing.beginLine, false);
+    canvas.addEventListener('mousemove', NoodlePadDrawing.moveLine, false);
+    canvas.addEventListener('mouseup', NoodlePadDrawing.endLine, false);
+    canvas.addEventListener('mouseout', NoodlePadDrawing.endLine, false);
+
+    NoodlePadDrawing.temp_context = context;
+  },  
+  
+  getPoint: function(event) {
+    return {
+      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft,
+      y: event.clientY - NoodlePadDrawing.temp_context.canvas.offsetTop
+    }
+  },
+  drawLine: function(context, path) {
+    context.beginPath();
+    context.moveTo(path[0].x, path[0].y);
+    for(i=1; i<path.length; i++) {
+      context.lineTo(path[i].x,path[i].y);
+    }
+
+    context.shadowBlur = "3";
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.strokeStyle = "rgb(64,64,64)";
+    context.lineWidth = "5";
+    context.stroke();
+    context.closePath();
+  },
+  beginLine: function(event) {
+    console.log('beginLine');
+    NoodlePadDrawing.drawing = true;
+    path = new Array(NoodlePadDrawing.getPoint(event));
+  },
+  moveLine: function(event) {
+    if (!NoodlePadDrawing.drawing) return;
+
+    path.push(NoodlePadDrawing.getPoint(event));
+    NoodlePadDrawing.temp_context.clearRect(0,0,500,500);
+    NoodlePadDrawing.drawLine(NoodlePadDrawing.temp_context, path);
+  },
+  endLine: function(event) {
+    if (!NoodlePadDrawing.drawing) return;
+
+    NoodlePadDrawing.temp_context.clearRect(0,0,500,500);
+    NoodlePadDrawing.drawLine(NoodlePadDrawing.main_context, path);
+    NoodlePadDrawing.drawing = false;
+
+    console.log(path);
+  }
+}
+
 $(function() {
 	$('#pad_title').addDefaultText('Create New');
 	$('#writeToggle').click(function(){
@@ -75,6 +140,7 @@ $(function() {
             e.preventDefault();
         };
     });
+  NoodlePadDrawing.setCanvas('mainPad', 'tempPad');    
 })
 
 $.fn.addDefaultText = function(text){
