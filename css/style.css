@@ -130,6 +130,14 @@ button.activeMode {
         border-right: 1px solid black;
         padding: 10px;
     }
+        #username {
+            margin-bottom:10px;
+        }
+        #sidebar h1 {
+            text-align: center;
+            font-size:18px;
+            font-weight: normal;
+        }
         #sidebar #create_pad {
             margin: 0 auto;
         }
@@ -158,7 +166,7 @@ button.activeMode {
         -webkit-box-flex:1;
         position: relative;
     }
-        #editor textarea {
+        #editor #padText {
             border: 0;
             position: absolute;
             top: 0;
