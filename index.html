@@ -6,22 +6,38 @@
   <title></title>
 
   <link rel="stylesheet" href="css/style.css?v=2">
-  <script src="js/libs/modernizr-1.7.min.js"></script>
 
 </head>
 
 <body>
-
+  <div id="sidebar">
+    <div id="create_pad">
+      Create New
+    </div>
+    <div id="new_pad_form", style="display:none">
+      <form>
+        <input type="text" name="new_pad_title" />
+        <input type="submit" value="Create" />
+      </form>
+    </div>
+  </div>
   <div id="container">
 
   </div> <!-- eo #container -->
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
-  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.1.min.js'>\x3C/script>")</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+  <script>window.jQuery || document.write("<script src='js/libs/jquery-1.6.2.min.js'>\x3C/script>")</script>
 
   <!-- scripts concatenated and minified via ant build script-->
+  <script src="js/libs/jquery.tmpl.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
+  
+  <script type ="text/x-jquery-tmpl" id = "padTitleTemplate">
+    <div class="pad_title">
+      ${title}
+    </div>
+  </script>
 
 </body>
 </html>
