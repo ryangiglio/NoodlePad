@@ -56,7 +56,7 @@ input[type="radio"] { vertical-align: text-bottom; }
 input[type="checkbox"] { vertical-align: bottom; }
 .ie7 input[type="checkbox"] { vertical-align: baseline; }
 .ie6 input { vertical-align: text-bottom; }
-label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+label, input[type="button"], input[type="submit"], input[type="image"], input[type="file"], button { cursor: pointer; }
 button, input, select, textarea { margin: 0; }
 input:valid, textarea:valid   {  }
 input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5px red; -webkit-box-shadow: 0px 0px 5px red; box-shadow: 0px 0px 5px red; }
@@ -66,7 +66,7 @@ input:invalid, textarea:invalid { border-radius: 1px; -moz-box-shadow: 0px 0px 5
 ::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
 ::selection { background:#FF5E99; color:#fff; text-shadow: none; }
 a:link { -webkit-tap-highlight-color: #FF5E99; }
-button {  width: auto; overflow: visible; }
+button, input[type="file"] {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
 
 body, select, input, textarea { color: #444; }
@@ -85,7 +85,7 @@ html { height: 100%; overflow: hidden;}
 
 body { display: -webkit-box; -webkit-box-orient: vertical; height: 100%;}
 
-button {
+button, input[type="file"] {
     background-color: #eeeeee;
     background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
     border: 1px solid #ccc;
@@ -213,7 +213,16 @@ button.activeMode {
             #editor #writeDrawToggle button {
                 display: inline;
                 }
+				
+	#editor #filearea {
+            position: absolute;
+            left: 10px;
+			border: 1px solid black;
 
+        }
+            #editor #filearea button {
+                display: inline;
+            }
 
 
 

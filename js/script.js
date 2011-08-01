@@ -135,6 +135,9 @@ $(function() {
 		$.tmpl(padTitleTemplate, pad).appendTo("#fileList");
 		$('#pad_title').val('').blur();
 	})
+	$('.padTitle').click(function(){
+		$('#padText').html('test<br>hi');
+	})
 	$('#username').keydown(function(e){
 		if (e.keyCode == 13){
 			$('#username').blur();
