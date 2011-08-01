@@ -60,11 +60,64 @@
           displayFile(this.files[0]);
         };
 		
-		displayFile(file){
-			alert(file.type);
+		function displayFile(file){
+			var reader = new FileReader();
+      
+			reader.onload = function(event) {
+				var oldText = document.getElementById('padText').innerHTML;
+				document.getElementById('padText').innerHTML = oldText + event.target.result.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n|\r/g, '<br>');
+			};
+      
+			reader.onerror = function() {
+				var oldText = document.getElementById('padText').innerHTML;
+				document.getElementById('padText').innerHTML = oldText +  '<br>!!Unable to read ' + file.fileName;
+			};
+		
+		alert(type);
+			if (type.indexOf("audio") == 0 ) {
+				addAudio(file.fileName);
+			} 
+			else if (type.indexOf("video") == 0) {
+				addVideo(file.fileName);
+			}
+			else if (type.indexOf("image") == 0) {				
+				addImage(file.fileName);
+			}
+			else {
+				reader.readAsBinaryString(file);
+			}      
 		}
 		
-		        content.ondragenter = function() {
+		function addAudio(filename) {
+			var current_files = document.getElementById("padText").innerHTML;
+			var audio_tag = "<audio src=\"" + filename + "\" controls=\"controls\">";
+			var new_files = current_files + "<br>"+ audio_tag;
+			
+			document.getElementById("padText").innerHTML = new_files;
+
+		}
+		
+		function addVideo(filename) {
+			var current_files = document.getElementById("padText").innerHTML;
+			var audio_tag = "<video src=\"" + filename + "\"width=\"320\" height=\"240\" controls=\"controls\">";
+			var new_files = current_files + "<br>"+ audio_tag;
+			
+			document.getElementById("padText").innerHTML = new_files;
+
+		}
+		
+		function addImage(filename) {
+			var current_files = document.getElementById("padText").innerHTML;
+			var audio_tag = "<img src=\"" + filename + "\"width=\"320\" height=\"240\">";
+			var new_files = current_files + "<br>"+ audio_tag;
+			
+			document.getElementById("padText").innerHTML = new_files;
+
+		}
+
+		
+		
+		content.ondragenter = function() {
           content.style.border = '4px solid #b1ecb3';
           return false;
         };
@@ -74,6 +127,12 @@
         };
       
         content.ondragleave = function() {
+          return false;
+        };
+		
+		  content.ondrop = function(event) {
+          content.style.border = '4px solid transparent';
+          displayFile(event.dataTransfer.files[0]);
           return false;
         };
       

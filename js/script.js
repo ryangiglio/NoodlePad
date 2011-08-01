@@ -68,7 +68,7 @@ var NoodlePadDrawing = {
   },
   getPoint: function(event) {
     return {
-      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width(),
+      x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width() - 21,
       y: event.clientY - NoodlePadDrawing.temp_context.canvas.offsetTop
     }
   },
