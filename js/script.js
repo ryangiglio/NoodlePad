@@ -4,17 +4,16 @@
 $(function() {
 	$('#writeToggle').click(function(){
 		if ($(this).hasClass('activeMode')){
-			$(this).removeClass('activeMode');
-			$('#drawToggle').addClass('activeMode');
+			$('#padText').attr('contenteditable') = false;
 		} else {
+			$('#padText').attr('contenteditable') = true;
 			$(this).addClass('activeMode');
 			$('#drawToggle').removeClass('activeMode');
 		}
 	})
 	$('#drawToggle').click(function(){
 		if ($(this).hasClass('activeMode')){
-			$(this).removeClass('activeMode');
-			$('#writeToggle').addClass('activeMode');
+			$('#padText').attr('contenteditable') = false;
 		} else {
 			$(this).addClass('activeMode');
 			$('#writeToggle').removeClass('activeMode');
