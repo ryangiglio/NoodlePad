@@ -15,9 +15,9 @@
             <div id="username" contenteditable="true">
               Username
             </div>
-            <div id="create_pad">
+            <button id="create_pad">
               Create New
-            </div>
+            </button>
             <div id="new_pad_form", style="display:none">
               <form>
                 <input type="text" name="new_pad_title" />
@@ -28,12 +28,12 @@
             </ul>
         </div>
         <div id="editor">
-            <div id="writeDrawToggle">
-                <input type="button" class="active" id="writeToggle" value="Write" name="" />
-                <input type="button" id="drawToggle" value="Draw" name="" />
-            </div>
             <textarea></textarea>
             <canvas></canvas>
+            <div id="writeDrawToggle">
+                <button id="writeToggle" class="activeMode">Write</button>
+                <button id="drawToggle">Draw</button>
+            </div>
         </div>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
