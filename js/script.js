@@ -54,8 +54,18 @@ var NoodlePadDrawing = {
     canvas.addEventListener('mouseout', NoodlePadDrawing.endLine, false);
 
     NoodlePadDrawing.temp_context = context;
-  },  
+  },
   
+  loadCanvas: function(paths) {
+    NoodlePadDrawing.main_context.clearRect(0,0,50000,50000);
+    for (i=0; i<paths.length; i++) {
+      NoodlePadDrawing.drawLine(NoodlePadDrawing.main_context, paths[i]);
+    }
+  },
+  
+  sendPath: function(path) {
+    console.log(JSON.stringify(path));
+  },
   getPoint: function(event) {
     return {
       x: event.clientX - NoodlePadDrawing.temp_context.canvas.offsetLeft - $('#sidebar').width() - 21,
@@ -82,7 +92,6 @@ var NoodlePadDrawing = {
     NoodlePadDrawing.strokeLine(context, path, "rgba(128,128,128,1)", 5);
   },
   beginLine: function(event) {
-    console.log('beginLine');
     NoodlePadDrawing.drawing = true;
     path = new Array(NoodlePadDrawing.getPoint(event));
   },
@@ -100,7 +109,7 @@ var NoodlePadDrawing = {
     NoodlePadDrawing.drawLine(NoodlePadDrawing.main_context, path);
     NoodlePadDrawing.drawing = false;
 
-    console.log(path);
+    NoodlePadDrawing.sendPath(path);
   }
 }
 
