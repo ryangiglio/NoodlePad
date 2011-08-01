@@ -16,19 +16,23 @@
               Username
             </div>
             <h1>Your Pads</h1>
+              Create New
+            </button>
+            <ul id="fileList">
+            </ul>
+            <ul id="fileList">
+            </ul>
             <div id="new_pad_form", style="display:none">
               <form id="new_pad">
                 <input type="text" id="pad_title" />
               </form>
             </div>
-            <ul id="fileList">
-            </ul>
             <button id="create_pad">
               Create New
             </button>
         </div>
         <div id="editor">
-            <textarea></textarea>
+            <div id="padText" contenteditable></div>
             <canvas></canvas>
             <div id="writeDrawToggle">
                 <button id="writeToggle" class="activeMode">Write</button>

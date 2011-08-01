@@ -2,6 +2,24 @@
 
 */
 $(function() {
+	$('#writeToggle').click(function(){
+		if ($(this).hasClass('activeMode')){
+			$(this).removeClass('activeMode');
+			$('#drawToggle').addClass('activeMode');
+		} else {
+			$(this).addClass('activeMode');
+			$('#drawToggle').removeClass('activeMode');
+		}
+	})
+	$('#drawToggle').click(function(){
+		if ($(this).hasClass('activeMode')){
+			$(this).removeClass('activeMode');
+			$('#writeToggle').addClass('activeMode');
+		} else {
+			$(this).addClass('activeMode');
+			$('#writeToggle').removeClass('activeMode');
+		}
+	})
 	var pads = [{title : "HTML5 Hackathon"},
 							{title : "Another Group"},
 							{title : "Okay"}
