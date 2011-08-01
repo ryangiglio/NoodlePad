@@ -57,9 +57,12 @@
     </script>
 	
 	<script type="text/javascript">
-    document.getElementById('file').onchange = function() {
-              displayFile(this.files[0]);
-            };
+		      var content = document.getElementById('filearea');
+
+	
+		document.getElementById('file').onchange = function() {
+          displayFile(this.files[0]);
+        };
 		
 		function displayFile(file){
 			var reader = new FileReader();
@@ -73,8 +76,8 @@
 				var oldText = document.getElementById('padText').innerHTML;
 				document.getElementById('padText').innerHTML = oldText +  '<br>!!Unable to read ' + file.fileName;
 			};
-		
-		alert(type);
+		var type = file.type;
+		//alert(type);
 			if (type.indexOf("audio") == 0 ) {
 				addAudio(file.fileName);
 			} 
@@ -116,7 +119,7 @@
 
 		}
 
-		
+	
 		
 		content.ondragenter = function() {
           content.style.border = '4px solid #b1ecb3';
