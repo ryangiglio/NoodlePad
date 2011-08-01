@@ -121,6 +121,10 @@ button:not(.activeMode):active {
 button.activeMode {
     opacity: .5;
 }
+.default_text {
+	font-style: italic;
+	color: gray;
+}
 #wrapper {
     display: -webkit-box;
     -webkit-box-flex:1;
