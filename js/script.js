@@ -62,20 +62,25 @@ var NoodlePadDrawing = {
       y: event.clientY - NoodlePadDrawing.temp_context.canvas.offsetTop
     }
   },
-  drawLine: function(context, path) {
+  strokeLine: function(context, path, style, width) {
     context.beginPath();
     context.moveTo(path[0].x, path[0].y);
     for(i=1; i<path.length; i++) {
       context.lineTo(path[i].x,path[i].y);
     }
 
-    context.shadowBlur = "3";
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.strokeStyle = "rgb(64,64,64)";
-    context.lineWidth = "5";
+    context.strokeStyle = style;
+    context.lineWidth = width;
     context.stroke();
     context.closePath();
+  },
+  drawLine: function(context, path) {
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.25)", 8);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.5)", 7);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(0,0,0,0.75)", 6);
+    NoodlePadDrawing.strokeLine(context, path, "rgba(64,64,64,1)", 5);
   },
   beginLine: function(event) {
     console.log('beginLine');
