@@ -69,7 +69,7 @@ var NoodlePadDrawing = {
   
   loadCanvas: function(paths) {
     NoodlePadDrawing.main_context.clearRect(0,0,50000,50000);
-    for (i=0; i<paths.length; i++) {
+    for (var i=0; i<paths.length; i++) {
       NoodlePadDrawing.drawLine(NoodlePadDrawing.main_context, paths[i]);
     }
   },
@@ -86,7 +86,7 @@ var NoodlePadDrawing = {
   strokeLine: function(context, path, style, width) {
     context.beginPath();
     context.moveTo(path[0].x, path[0].y);
-    for(i=1; i<path.length; i++) {
+    for(var i=1; i<path.length; i++) {
       context.lineTo(path[i].x,path[i].y);
     }
 
