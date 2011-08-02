@@ -142,7 +142,7 @@ $(function() {
 		}
         $('#padText').css('z-index', '99');
 	})
-	var pads = [{title : "HTML5 Hackathon", id : 1},
+	var pads = [{title : "Planning a Camping Trip", id : 1},
 							{title : "HTML5", id : 2},
 							{title : "Noodle Pad!", id : 3}
 							];
