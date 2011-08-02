@@ -143,8 +143,8 @@ $(function() {
         $('#padText').css('z-index', '99');
 	})
 	var pads = [{title : "HTML5 Hackathon", id : 1},
-							{title : "Planning Camping Trip", id : 2},
-							{title : "Intro to Psych", id : 3}
+							{title : "HTML5", id : 2},
+							{title : "Noodle Pad!", id : 3}
 							];
 	// var pads = ws.send('pad_list');
 	$.tmpl(padTitleTemplate, pads).appendTo("#fileList");
