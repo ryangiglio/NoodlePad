@@ -158,6 +158,7 @@ $(function() {
 
         // Create a new pad
         NoodlePadDrawing.loadCanvas([]);
+        $('#padText').html('');
 	})
 	$('.padTitle').live('click', function(){
 		var id = $(this).tmplItem().data.id;
